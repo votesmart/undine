@@ -6,6 +6,7 @@ __author__="Mike Shultz <mike@votesmart.org>"
 __copyright__="Copyright (c) 2017 Vote Smart"
 
 import os, sys, argparse, socket, configparser
+from __future__ import print_function
 from subprocess import Popen, PIPE
 from envelopes import Envelope
 from lockfile import LockFile
