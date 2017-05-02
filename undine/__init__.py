@@ -2,11 +2,14 @@
 """ undine
     A wrapper for handling multi-archive backups with Borg
 """
+
+from __future__ import print_function
+
 __author__="Mike Shultz <mike@votesmart.org>"
 __copyright__="Copyright (c) 2017 Vote Smart"
+__version__="0.0.2"
 
 import os, sys, argparse, socket, configparser
-from __future__ import print_function
 from subprocess import Popen, PIPE
 from envelopes import Envelope
 from lockfile import LockFile

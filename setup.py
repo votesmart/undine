@@ -1,11 +1,12 @@
 import os.path
 from setuptools import setup, find_packages
+from undine import __version__
 
 __DIR__ = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name = 'undine',
-    version = '0.0.1',
+    version = __version__,
     description = 'A wrapper for handling multi-archive backups with Borg',
     url = 'https://github.com/votesmart/undine',
     author = 'Mike Shultz',
