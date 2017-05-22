@@ -9,10 +9,9 @@ __author__="Mike Shultz <mike@votesmart.org>"
 __copyright__="Copyright (c) 2017 Vote Smart"
 __version__="0.0.2"
 
-import os, sys, argparse, socket, configparser
+import os, sys, argparse, socket, configparser, fasteners
 from subprocess import Popen, PIPE
 from envelopes import Envelope
-from lockfile import LockFile
 
 try:
     from StringIO import StringIO
@@ -76,8 +75,7 @@ def main():
     email_log = []
 
     # Should probably prevent multiple backups from running
-    lock = LockFile(config['lockfile'])
-    with lock:
+    with fasteners.InterProcessLock(config['lockfile']):
 
         if config['verbose']:
             print('Backing up system...')

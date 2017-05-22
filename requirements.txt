@@ -1,2 +1,2 @@
 Envelopes>=0.4
-lockfile>=0.12.2
+fasteners>=0.14.1
