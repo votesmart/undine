@@ -26,7 +26,7 @@ def main():
     parser.add_argument('--dry-run', action='store_true', dest="dryrun", help="Do not actually create archives.")
     parser.add_argument('-v', '--verbose', action='store_true', dest="verbose", help="Show output")
     parser.add_argument('-d', '--debug', action='store_true', dest="debug", help="Show debug output")
-    parser.add_argument('-l', '--lock-file', dest="lockfile", default=u"/tmp/backup.log", help="Lock file to use")
+    parser.add_argument('-l', '--lock-file', dest="lockfile", default=u"/tmp/undine.lock", help="Lock file to use")
     args = parser.parse_args()
 
     # Config helper
@@ -56,7 +56,7 @@ def main():
         'verbose': False,
         'repos': parser.get('default', 'repos', fallback='ssh://rsync//data1/home/9774/file0.ia.votesmart.org'),
         'notify_email': parser.get('default', 'notify_email', fallback='root@votesmart.org'),
-        'lockfile': args.lockfile or parser.get('default', 'lockfile', fallback='/tmp/udine.lock'),
+        'lockfile': parser.get('default', 'lockfile', fallback=None) or args.lockfile,
         'units': dict(parser.items('units')),
         'hostname': parser.get('default', 'hostname', fallback=socket.gethostname()),
         'smtp_host': parser.get('smtp', 'host', fallback='localhost'),
