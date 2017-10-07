@@ -97,7 +97,7 @@ def main():
         extra_args = ""
         if args.dryrun:
             extra_args += "-n"
-        if hasattr(args, 'remote_path'):
+        if args.remote_path is not None:
             extra_args += "--remote-path=%s" % args.remote_path
 
         for name,path in config['units'].items():
